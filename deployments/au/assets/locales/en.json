@@ -1,0 +1,21 @@
+{
+  "deck": {
+    "prev": "PREV",
+    "next": "NEXT"
+  },
+  "card": {
+    "titles": {
+      "location": "Select Haze Location",
+      "depth": "Select flood depth",
+      "photo": "Upload a photo",
+      "description": "Tell us more",
+      "review": "Review & submit",
+      "firetype": "Select Fire Type",
+      "fireestimate": "Report Fire Extent",
+      "firedistance": "Your Location and Fire Location",
+      "airquality": "Report Air Quality",
+      "visibility": "Report Visibility",
+      "thank": "Thank you!"
+    }
+  }
+}

@@ -22,9 +22,9 @@
   "homepage": "https://github.com/urbanriskmap/cognicity-cards-ng#readme",
   "scripts": {
     "ng": "ng",
-    "start": "dep=id npm run pre-build-tasks && ng serve",
+    "start": "dep=au npm run pre-build-tasks && ng serve",
     "start-ph": "dep=ph npm run pre-build-tasks && ng serve",
-    "serve-prod": "dep=id npm run pre-build-tasks && ng serve --prod",
+    "serve-prod": "dep=au npm run pre-build-tasks && ng serve --prod",
     "serve-prod-ngsw": "npm run build-prod-ngsw && http-server dist/prod-us -p 8080",
     "test": "ng test",
     "lint": "ng lint",
@@ -36,12 +36,15 @@
     "add-component": "ng g c components/$comp -m routes/cards/$card",
     "pre-build-tasks": "babel tasks/build/**/*.ts tasks/build/*.ts -o tasks/build/index.js && gulp -f ./tasks/build --dep $dep",
     "build": "npm run build-dev && npm run build-prod",
-    "build-dev": "npm run build-dev-id",
-    "build-prod": "npm run build-prod-id",
+    "build-dev": "npm run build-dev-id && npm run build-dev-au",
+    "build-prod": "npm run build-prod-id && npm run build-prod-ngsw-au",
     "build-dev-jp": "dep=jp npm run pre-build-tasks && ng build --configuration=dev-jp --output-path='dist/dev-jp'",
     "build-prod-jp": "dep=jp npm run pre-build-tasks && ng build --prod --configuration=prod-jp --output-path='dist/prod-jp' --build-optimizer --vendor-chunk=true --stats-json",
     "build-dev-id": "dep=id npm run pre-build-tasks && ng build --configuration=dev-id --output-path='dist/dev-id'",
-    "build-prod-id": "dep=id npm run pre-build-tasks && ng build --prod --configuration=prod-id --output-path='dist/prod-id' --build-optimizer --vendor-chunk=true --stats-json"
+    "build-prod-id": "dep=id npm run pre-build-tasks && ng build --prod --configuration=prod-id --output-path='dist/prod-id' --build-optimizer --vendor-chunk=true --stats-json",
+    "build-dev-au": "dep=au npm run pre-build-tasks && ng build --env=dev-au --output-path='dist/dev-au'",
+    "build-prod-au": "dep=au npm run pre-build-tasks && ng build --prod --env=prod-au --output-path='dist/prod-au' --build-optimizer --vendor-chunk=true --stats-json",
+    "build-prod-ngsw-au": "npm run build-prod-au && node_modules/.bin/ngsw-config dist/prod-au ./src/ngsw-config.json && cp node_modules/@angular/service-worker/ngsw-worker.js ./dist/prod-au/ngsw-worker.js"
   },
   "private": true,
   "dependencies": {

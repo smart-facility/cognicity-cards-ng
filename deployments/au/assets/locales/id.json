@@ -1,0 +1,21 @@
+{
+  "deck": {
+    "prev": "PREV",
+    "next": "NEXT"
+  },
+  "card": {
+    "titles": {
+      "location": "Lokasi Kabut",
+      "depth": "Kedalaman Banjir",
+      "photo": "Unggah Foto",
+      "description": "Tambahkan Deskripsi",
+      "review": "Tinaju & Laporkan",
+      "firetype": "Jenis Laporan",
+      "fireestimate": "Perkiraan Kebakaran",
+      "firedistance": "Lokasi Anda dan Kebakaran",
+      "airquality": "Kualitas Udara",
+      "visibility": "Jarak Pandang",
+      "thank": "Terima Kasih!"
+    }
+  }
+}

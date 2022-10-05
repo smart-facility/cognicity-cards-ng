@@ -24,6 +24,7 @@ export class AuthService {
       stage === 'dev'
       && otl === 'test123'
     ) {
+      this.deckService.setCardLanguage('en');
       return true;
     }
 
