@@ -1,21 +1,201 @@
 {
+  "terms": {
+    "userAgreement": "User Agreement",
+    "privacy": "Privacy policy"
+  },
+  "validationErrors": {
+    "noPhoto": "A photo OR description is required to make a report",
+    "unsupportedLocation" : "Unsupported location, report cannot be displayed on the map"
+  },
   "deck": {
     "prev": "PREV",
     "next": "NEXT"
   },
+  "search": {
+    "placeholder": "Click & Drag to Move Pin or Search Here",
+    "locateText": "Show me where I am"
+  },
   "card": {
+    "yes": "yes",
+    "no": "no",
     "titles": {
-      "location": "Select Haze Location",
+      "type": "Select Report Type",
+      "location": "Select Report Location",
       "depth": "Select flood depth",
-      "photo": "Upload a photo",
-      "description": "Tell us more",
-      "review": "Review & submit",
-      "firetype": "Select Fire Type",
       "fireestimate": "Report Fire Extent",
       "firedistance": "Your Location and Fire Location",
       "airquality": "Report Air Quality",
       "visibility": "Report Visibility",
+
+      "accessibility": "Report Road Accessibility",
+      "condition": "Describe Road Condition",
+      "structure": "Report Structure Failure",
+
+      "impact": "Report Wind Impact",
+      "windstructure": "Report Structure Failure",
+
+      "sign": "Report Volcanic Signs",
+      "evacuationnumber": "Report Evacuation",
+      "evacuationarea": "Report Evacuation",
+
+      "photo": "Upload a Photo",
+      "description": "Tell us more",
+      "review": "Review & Submit",
       "thank": "Thank you!"
-    }
-  }
+    },
+    "type": {
+      "fire": {
+        "fireTypeButton": {
+          "text": "Fire Nearby",
+          "hint": "we will not report your location"
+        },
+        "hazeTypeButton": "Haze at My Location"
+      },
+      "earthquake": {
+        "roadTypeButton": "Road Accessibility",
+        "structureTypeButton": "Structural Failure"
+      }
+    },
+    "visibility": {
+      "card": [
+        "I can still see but I need to wear a mask.",
+        "I can still see but not clean enough to drive.",
+        "I can barely see. Too dangerous to go out."
+      ],
+      "review": [
+        "High",
+        "Moderate",
+        "Low"
+      ]
+    },
+    "airquality": {
+      "title": "Indicate any symptoms:",
+      "card": [
+        "None",
+        "Smell Smoke",
+        "Watery Eyes / Throat Irritation",
+        "Headache / Nauseous",
+        "Shortness of Breath / Chest Tightness"
+      ],
+      "review": [
+        "",
+        "Moderate",
+        "Poor",
+        "Severe",
+        "Hazardous"
+      ]
+    },
+    "accessibility": [
+      "No access for vehicles",
+      "2-Wheel Vehicle",
+      "4-Wheel Vehicle (Sedan)",
+      "4-Wheel Vehicle (SUV)",
+      "Large Vehicle (Truck)"
+    ],
+    "condition": [
+      {
+        "title": "Light Disturbance",
+        "subtitle": "Small Road Cracks, Few Obstacles, Partial Access"
+      },
+      {
+        "title": "Moderate Disturbance",
+        "subtitle": "Large Road Cracks, Partially Blocked, Limited Access"
+      },
+      {
+        "title": "Heavy Disturbance",
+        "subtitle": "Destroyed Road, Completely Blocked, No access"
+      }
+    ],
+    "structure": {
+      "cracking": "Cracking",
+      "partially_collapsed": "Partially Collapsed",
+      "fully_collapsed": "Fully Collapsed"
+    },
+    "evacuation": {
+      "description": "Do you know where to evacuate to?"
+    },
+    "evacuationnumber":{
+      "description": "Number of people in your village"
+    },
+    "fireestimate": {
+      "unit": "hectares"
+    },
+    "sign" : {
+      "description": "Indicate any observations:",
+      "symptoms":[
+        "Significant Temperature Increases",
+        "Drought / Vegetation Death",
+        "Unusual Animal Behaviour",
+        "Frequent Earthquake Tremors",
+        "Frequent Rumbling Sounds"
+      ]
+    },
+    "impact": {
+        "symptoms" : [
+        {
+          "title": "Low Disruption",
+          "subtitle": "Small obstacles flying"
+        },
+        {
+          "title": "Medium Disruption",
+          "subtitle": "Road blockages, transport disturbance, blackout"
+        },
+        {
+          "title": "High Disruption",
+          "subtitle": "Flying roofs, structural failures, large obstacles flying, crop damage"
+        }
+      ],
+      "review":[
+        "Low Disruption",
+        "Medium Disruption",
+        "High Disruption"
+      ]
+    },
+    "description": "Add your description here ...",
+    "review": {
+      "text": "By submitting this report you are agreeing to the ",
+      "terms": "User agreement & Privacy policy",
+      "link": "Contributors Agreement",
+      "disturbanceKey": "Disturbance:",
+      "accessKey": "Road Accessibility:",
+      "structureKey": "Structural Failure:",
+      "floodKey": "Flood Depth:",
+      "fireKey": "Fire Extent:",
+      "impactKey": "Impact:",
+      "airQualityKey": "Air Quality:",
+      "visibilityKey": "Visibility:",
+      "volcanoKey": "Observations:",
+      "peopleKey": "Number of people nearby:",
+      "evacuateKey": "Know where to evacuate:",
+      "people": "people"
+    },
+    "thank": {
+      "result": "SUCCESS!",
+      "title": [
+        "Thank you for your report. Check",
+        "to view your report and see real-time disaster updates."
+      ],
+      "subtitle": "Would you like to submit another report?",
+      "acceptButton": "Yes",
+      "rejectButton": "No",
+      "tips": "Click here for safety tips from BNPB"
+    },
+    "swipeText": "Swipe to submit",
+    "reportAgainStructure": "Would you also like to submit structural failure report?",
+    "reportAgainAccess": "Would you also like to submit road accessibility report?"
+  },
+  "partner_mode_title": "Enter Partner Mode?",
+  "partner_mode_body1":"Anyone can submit a disaster report to Floodreport",
+  "partner_mode_body2":"To submit an anonymous disaster report, skip this step!",
+  "partner_mode_body3":"To submit a report as a partner organization, enter your code below",  
+  "partner_mode_placeholder":"Partner Code",
+  "forgot_partner_code":"Forget Partner Code",
+  "partner_mode_cta":"GO",
+  "partner_mode_loginHeader":"Welcome Back!",
+  "partner_mode_loginSubHeader" : "You are submitting a report as:",
+  "partner_mode_partnerNotfound":"Partner code not found or in inactive status , Kindly check your partner code or email us at mehrdad@uow.edu.au",
+  "forgot_partner_email":" mehrdad@uow.edu.au",
+  "forgot_partner_subject":"Forgot Partner Code",
+  "forgot_partner_body":"Hi, My name is [enter your name] from [enter your organization]. I have forgotten my partner code and/or I would like to gain access to a Partner Code to be able to report disasters as an official partner representative of PetaBencana.id ,Thank you."
+
 }
