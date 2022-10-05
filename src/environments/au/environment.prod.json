@@ -2,6 +2,9 @@
   "production": true,
   "stage": "prod",
   "deployment": "au",
+  "mapbox_access_token": "pk.eyJ1IjoicGV0YWJlbmNhbmEiLCJhIjoiY2s2MjF1cnZmMDlxdzNscWc5MGVoMTRkeCJ9.PGcoQqU6lBrcLfBmvTrWrQ",
+  "data_server": "https://fakeapi.com/",
+  "app": "https://fakeapp.com/",
   "decks": [
     {
       "name": "flood",

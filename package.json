@@ -42,8 +42,8 @@
     "build-prod-jp": "dep=jp npm run pre-build-tasks && ng build --prod --configuration=prod-jp --output-path='dist/prod-jp' --build-optimizer --vendor-chunk=true --stats-json",
     "build-dev-id": "dep=id npm run pre-build-tasks && ng build --configuration=dev-id --output-path='dist/dev-id'",
     "build-prod-id": "dep=id npm run pre-build-tasks && ng build --prod --configuration=prod-id --output-path='dist/prod-id' --build-optimizer --vendor-chunk=true --stats-json",
-    "build-dev-au": "dep=au npm run pre-build-tasks && ng build --env=dev-au --output-path='dist/dev-au'",
-    "build-prod-au": "dep=au npm run pre-build-tasks && ng build --prod --env=prod-au --output-path='dist/prod-au' --build-optimizer --vendor-chunk=true --stats-json",
+    "build-dev-au": "dep=au npm run pre-build-tasks && ng build --configuration=dev-au --output-path='dist/dev-au'",
+    "build-prod-au": "dep=au npm run pre-build-tasks && ng build --prod --configuration=prod-au --output-path='dist/prod-au' --build-optimizer --vendor-chunk=true --stats-json",
     "build-prod-ngsw-au": "npm run build-prod-au && node_modules/.bin/ngsw-config dist/prod-au ./src/ngsw-config.json && cp node_modules/@angular/service-worker/ngsw-worker.js ./dist/prod-au/ngsw-worker.js"
   },
   "private": true,
