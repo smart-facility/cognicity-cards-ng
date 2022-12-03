@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { environment as env } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import  { API} from 'aws-amplify';
+import { v4 as uuidv4 } from 'uuid';
+
 
 type deckType = 'fire' | 'earthquake' | 'wind' | 'haze' | 'volcano' | 'flood';
 type deckSubType = 'fire' | 'haze' | 'road' | 'structure' | 'wind' | 'volcano' | 'flood';
@@ -385,50 +388,61 @@ export class DeckService {
     // }
 
     // PUT reportcard data
-    return new Promise((resolve, reject) =>
-      this.http.put(reportURL, report).subscribe(
-        (data) => {
-          if (hasPhoto && photoUploaded) {
-            // If photo uploaded successfully, patch image_url
-            this.http
-              .patch(reportURL, {
-                // TODO: match server patch handler
-                image_url: id,
-              })
-              .subscribe(
-                (patch_success) => {
-                  // Proceed to thanks page
-                  // thanks_settings.code = 'pass';
-                  // router.navigate('thanks');
-                  resolve();
-                },
-                (patch_error) => {
-                  // Proceed to thanks page with image upload error notification
-                  // thanks_settings.code = 'fail';
-                  // router.navigate('thanks');
-                  reject();
-                }
-              );
-          } else if (hasPhoto && !photoUploaded) {
-            // Proceed to thanks page with image upload error notification
-            // thanks_settings.code = 'fail';
-            // router.navigate('thanks');
-            resolve();
-          } else {
-            // Proceed to thanks page
-            // thanks_settings.code = 'pass';
-            // router.navigate('thanks');
-            resolve();
-          }
-        },
-        (error) => {
-          // error_settings.code = put_error.statusCode;
-          // error_settings.msg = put_error.statusText;
-          // router.navigate('error');
-          reject();
+    return new Promise((resolve, reject) => {
+      API.post('dev-API','/reports',{
+        body: {
+          id: uuidv4(),
+          ...report
         }
-      )
-    );
+      }).then((data)=>{
+        console.log(data);
+        resolve();
+      });
+    
+    });
+    //   this.http.put(reportURL, report).subscribe(
+    //     (data) => {
+    //       if (hasPhoto && photoUploaded) {
+    //         // If photo uploaded successfully, patch image_url
+    //         this.http
+    //           .patch(reportURL, {
+    //             // TODO: match server patch handler
+    //             image_url: id,
+    //           })
+    //           .subscribe(
+    //             (patch_success) => {
+    //               // Proceed to thanks page
+    //               // thanks_settings.code = 'pass';
+    //               // router.navigate('thanks');
+    //               resolve();
+    //             },
+    //             (patch_error) => {
+    //               // Proceed to thanks page with image upload error notification
+    //               // thanks_settings.code = 'fail';
+    //               // router.navigate('thanks');
+    //               reject();
+    //             }
+    //           );
+    //       } else if (hasPhoto && !photoUploaded) {
+    //         // Proceed to thanks page with image upload error notification
+    //         // thanks_settings.code = 'fail';
+    //         // router.navigate('thanks');
+    //         resolve();
+    //       } else {
+    //         // Proceed to thanks page
+    //         // thanks_settings.code = 'pass';
+    //         // router.navigate('thanks');
+    //         resolve();
+    //       }
+    //     },
+    //     (error) => {
+    //       // error_settings.code = put_error.statusCode;
+    //       // error_settings.msg = put_error.statusText;
+    //       // router.navigate('error');
+    //       reject();
+    //     }
+    //   )
+    // );
   }
 
   verifyPartnerCode(partnerCode: string) {

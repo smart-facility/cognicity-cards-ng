@@ -58,7 +58,7 @@ export class ReviewComponent implements OnInit {
   }
 
   get isDescriptionAndPhotoEmpty(): boolean {
-    console.log(this.deckService.isNextButtonDisabled);
+    // console.log(this.deckService.isNextButtonDisabled);
     return !(this.deckService.getDescription() || this.deckService.getPreview());
   }
   

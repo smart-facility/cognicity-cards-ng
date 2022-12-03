@@ -4,7 +4,7 @@
   color: white;
   background-color: #424243;
   line-height: 50px;
-  align-items: start;
+  align-items: flex-start;
   display: flex;
   justify-content: space-between;
 }
@@ -15,7 +15,7 @@
   color: white;
   background-color: #c0262d;
   line-height: 50px;
-  align-items: start;
+  align-items:  flex-start;
   display: flex;
   justify-content: space-between;
 }
@@ -162,7 +162,7 @@
   width: 100%;
   width: -moz-available;          /* WebKit-based browsers will ignore this. */
   width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-  width: fill-available;
+  width: stretch;
   height: 2rem;
 
 }
