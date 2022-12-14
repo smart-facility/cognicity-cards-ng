@@ -50,7 +50,6 @@ export class ReviewComponent implements OnInit {
 
   handleSuccess(event) {
     // add verification step
-    console.log("hasdfn")
     this.deckService.setCaptchaCleared()
   }
   get showWarning(): boolean {

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { environment as env } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import  { API} from 'aws-amplify';
+import  { API , Storage} from 'aws-amplify';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -289,34 +289,30 @@ export class DeckService {
   }
 
   async submit(): Promise<any> {
-    const signedURL = this.imageSignedUrl;
-    const cardId = this.route.snapshot["_routerState"].url.split("/")[1];
+    const cardId = uuidv4();
     const report = this._get_report_summary();
     // conditionally add properties to the report depending on the current deck type
 
-    console.log("Report image" , report , signedURL , cardId);
-    if (this.preview && signedURL) {
+    console.log("Report image" , report  , cardId);
+    if (this.preview) {
       const photo = this.preview;
-      if (signedURL === "url_error") {
-        // PUT report & notify user about upload error
-        return this.putReport(report, cardId, true, false);
-      } else {
+      const fname = cardId+ (photo.name.substring(photo.name.lastIndexOf('.')));
+      console.log(fname);
         // PUT photo in S3 bucket using signedURL
-        return await this.http
-          .put(signedURL, photo)
-          .toPromise()
-          .then((success) => {
+        return await Storage.put(fname, photo)
+          .then((success: any) => {
+            console.log(success);
             // PUT report & patch image_url
-            return this.putReport(report, cardId, true, true);
+            return this.putReport(report, cardId, true, success.key);
           })
           .catch((error) => {
             // PUT report & notify user about upload error
-            return this.putReport(report, cardId, true, false);
+            return this.putReport(report, cardId, true, "");
           });
-      }
+      
     } else {
       // PUT report & proceed to thanks
-      return this.putReport(report, cardId, false, false);
+      return this.putReport(report, cardId, false, "");
     }
   }
   _get_report_summary(): any {
@@ -373,30 +369,23 @@ export class DeckService {
     report: any,
     id: any,
     hasPhoto: boolean,
-    photoUploaded: boolean
+    photoUploadedKey: string
   ): Promise<any> {
-    const reportURL = env.data_server + "cards/" + id;
-    // Define route settings pointers
-    // var error_settings, thanks_settings;
-    // for (let route of router.routes) {
-    //   if (route.name === 'error') {
-    //     error_settings = route.settings;
-    //   }
-    //   if (route.name === 'thanks') {
-    //     thanks_settings = route.settings;
-    //   }
-    // }
 
     // PUT reportcard data
     return new Promise((resolve, reject) => {
       API.post('dev-API','/reports',{
         body: {
-          id: uuidv4(),
-          ...report
+          ...report,
+          id: id,
+          image_url: photoUploadedKey
         }
       }).then((data)=>{
         console.log(data);
         resolve();
+      }).catch((error) => {
+        console.log(error);
+        reject();
       });
     
     });
@@ -411,15 +400,9 @@ export class DeckService {
     //           })
     //           .subscribe(
     //             (patch_success) => {
-    //               // Proceed to thanks page
-    //               // thanks_settings.code = 'pass';
-    //               // router.navigate('thanks');
     //               resolve();
     //             },
     //             (patch_error) => {
-    //               // Proceed to thanks page with image upload error notification
-    //               // thanks_settings.code = 'fail';
-    //               // router.navigate('thanks');
     //               reject();
     //             }
     //           );

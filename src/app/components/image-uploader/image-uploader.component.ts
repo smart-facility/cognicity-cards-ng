@@ -23,7 +23,7 @@ export class ImageUploaderComponent implements OnInit {
   onFileChanged(event) {
     this.setImagePreview(event.target.files[0])
     this.deckService.setPreview(event.target.files[0] as File)
-    this.deckService.updateSignedUrl(event.target.files[0] as File)
+    // this.deckService.updateSignedUrl(event.target.files[0] as File)
   }
 
   setImagePreview(file) {

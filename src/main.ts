@@ -33,13 +33,13 @@ Amplify.configure({
           region: "ap-southeast-2"
         }
       ]
-    }//,
-    // Storage: {
-    //   AWSS3: {
-    //     bucket: '', //REQUIRED -  Amazon S3 bucket
-    //     region: 'ap-southeast-2', //OPTIONAL -  Amazon service region
-    //   }
-    // }
+    },
+    Storage: {
+      AWSS3: {
+        bucket: 'floodreportimagebucket133715-dev', //REQUIRED -  Amazon S3 bucket
+        region: 'ap-southeast-2', //OPTIONAL -  Amazon service region
+      }
+    }
   });
 
 
